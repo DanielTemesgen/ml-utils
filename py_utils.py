@@ -27,7 +27,7 @@ def most_recent_model(model_name, wd, subfolder):
     else:
         most_recent_model_path = None
     return most_recent_model_path
-def dump_diff_model(model_name, model_var, wd, subfolder):
+def dump_diff_model(model_name, model_var, wd, subfolder=''):
     """
     This function will dump your model with a unique timestamp associated with it.
     First it will check if the most recent model is the same as the one you're trying to dump, 
@@ -48,7 +48,7 @@ def dump_diff_model(model_name, model_var, wd, subfolder):
     """
     from joblib import dump, load
     from datetime import datetime
-    from filecmp import cmp 
+    import filecmp 
     import os
     from os.path import isfile, join
     today = datetime.today()
@@ -58,7 +58,7 @@ def dump_diff_model(model_name, model_var, wd, subfolder):
     dump(model_var, holding_path)
     if most_recent_model_path == None:
         dump(model_var, path_of_model_to_save)
-    elif ~cmp(most_recent_model_path, holding_path): #Only save model if it's different, this overwrite the file
+    elif not filecmp.cmp(most_recent_model_path, holding_path): #Only save model if it's different, this overwrite the file
         dump(model_var, path_of_model_to_save)
     os.remove(holding_path) #remove the holding file
 def sensitivity_analysis(sens_voi, sens_x_test, sens_y_test, sens_model, multiplier = 1.1):
@@ -83,7 +83,7 @@ def sensitivity_analysis(sens_voi, sens_x_test, sens_y_test, sens_model, multipl
     return sens_df
 def hide_code_cells():
     #Auto-hide code cells in jupyter
-    from IPython.display import HTML
+    from IPython.display import HTML, display
     
     hide_code = HTML('''<script>
     code_show=false; 
