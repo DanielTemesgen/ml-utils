@@ -3,7 +3,7 @@
 
 # .ipynb_checkpoints/py_utils-checkpoint.py: 110
 # py_utils.py: 110
-ipython == 7.6.1
+ipython == 7.16.3
 
 # .ipynb_checkpoints/py_utils-checkpoint.py: 47
 # py_utils.py: 47
