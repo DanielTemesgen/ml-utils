@@ -7,7 +7,7 @@ ipython == 7.6.1
 
 # .ipynb_checkpoints/py_utils-checkpoint.py: 47
 # py_utils.py: 47
-joblib == 0.13.2
+joblib == 1.2.0
 
 # .ipynb_checkpoints/py_utils-checkpoint.py: 87
 # py_utils.py: 87
